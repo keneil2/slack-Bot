@@ -1,26 +1,42 @@
 <?php
 
 session_start();
-
-function convertImageUrlToBase64($image_url)
+/**
+ * *
+ * convert image file to basedx64
+ * @param string $image_url
+ * @throws \Exception
+ * @throws \FileNotAllowedException
+ * @return string
+ */
+function convertImageUrlToBase64(string $image_url)
 {
-    // Get the image data from the URL
+   $allowedfileTypes=[
+    "image/jpeg",
+    "image/png",
+    "image/avif",
+    "image/svg+xml",
+    "image/webp"
+   ];
+
     $image_data = file_get_contents($image_url);
 
-    // Check if the image was successfully retrieved
     if ($image_data === false) {
-        throw new Exception("Could not retrieve image from URL.");
+        throw new Exception("Could not find file");
     }
 
-    // Get the MIME type of the image to include in the base64 string
+    
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
+
+ 
+
     $mime_type = finfo_buffer($finfo, $image_data);
+     
     finfo_close($finfo);
 
-    // Encode the image data to base64
     $base64_image = base64_encode($image_data);
 
-    // Return the base64 string with the MIME type prefix
+
     return 'data:' . $mime_type . ';base64,' . $base64_image;
 }
 
@@ -31,6 +47,12 @@ function convertImageUrlToBase64($image_url)
 
 
 
+/**
+ * this function get the file object from slack
+ * @param mixed $file_id
+ * @param mixed $token slack bot  token
+ * @return array
+ */
 function getFileFromSlack($file_id, $token)
 {
     $url = "https://slack.com/api/files.info";
@@ -43,19 +65,26 @@ function getFileFromSlack($file_id, $token)
 }
 
 
-
+/**
+ * Download the file from slack and store it in files folder and set a file name session
+ * @param mixed $url
+ * @param mixed $token
+ * @return void
+ */
 function DownloadFile($url, $token)
 {
-
-
     $dir = "files/";
     $handle = curl_init($url);
+
     // extracts the filename from the url 
     $filename = basename($url);
+
     $fp=fopen("exe.log","w+");
+
     fwrite($fp,$filename);
 
     $_SESSION["File_name"]=$filename;
+
 
     $save_location = $dir . $filename;
    
@@ -74,7 +103,14 @@ function DownloadFile($url, $token)
     fclose($fp);
 }
 
-
+/**
+ * send message to a slack channel 
+ * @param mixed $channel
+ * @param mixed $message
+ * @param mixed $token
+ * @throws \Exception
+ * @return void
+ */
 function sendMessageToSlack($channel, $message, $token)
 {
     $post_fields = json_encode([
@@ -101,6 +137,14 @@ function sendMessageToSlack($channel, $message, $token)
     }
 }
 
+
+
+/**
+ * this function get the file object from slack
+ * @param mixed $file_id
+ * @param mixed $token slack bot  token
+ * @return string 
+ */
 function getFileInfo($file_id, $token)
 {
     $url = "https://slack.com/api/files.info?file=$file_id";
@@ -125,14 +169,16 @@ function getFileInfo($file_id, $token)
 
 
 
-// todo: create openAi function to send image with text to
 
+/**
+ * send the file and prompt to open ai
+ * @param mixed $prompt
+ * @return bool|string
+ */
 function openAi($prompt)
 {
     $url = "https://api.openai.com/v1/chat/completions";
     $base64_image=convertImageUrlToBase64(__DIR__."\\files\\".$_SESSION["File_name"]);
-    //   $fp= fopen("exe.log","r+");
-//    fwrite( $fp,$base64_image);
     $data = [
         "model" => "gpt-4o",
         "messages" => [
