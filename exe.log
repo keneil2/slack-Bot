@@ -1,0 +1,30 @@
+screenshot_2{
+  "id": "chatcmpl-AJN5itzFIFmO13Jwd3xBi7FzqdhSj",
+  "object": "chat.completion",
+  "created": 1729180358,
+  "model": "gpt-4o-2024-08-06",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Sure! Here's a basic HTML and CSS implementation for the provided design:\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Register</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            background-color: #f0f0f0;\n            margin: 0;\n        }\n\n        .register-container {\n            background-color: #2a32ab;\n            border-radius: 10px;\n            padding: 30px 20px;\n            width: 300px;\n            text-align: center;\n            color: white;\n        }\n\n        .register-container h1 {\n            margin-bottom: 20px;\n        }\n\n        .register-container input[type=\"text\"],\n        .register-container input[type=\"email\"],\n        .register-container input[type=\"password\"] {\n            width: 90%;\n            padding: 10px;\n            margin-bottom: 15px;\n            border-radius: 5px;\n            border: none;\n        }\n\n        .register-container input[type=\"submit\"] {\n            background-color: white;\n            color: black;\n            border: none;\n            border-radius: 5px;\n            padding: 10px 20px;\n            cursor: pointer;\n            font-weight: bold;\n        }\n\n        .register-container .login-link {\n            color: white;\n            margin-top: 10px;\n            display: inline-block;\n        }\n\n        .register-container .login-link a {\n            color: blue;\n            text-decoration: none;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"register-container\">\n        <h1>Register here!</h1>\n        <form>\n            <input type=\"text\" placeholder=\"username\" required>\n            <input type=\"email\" placeholder=\"Email\" required>\n            <input type=\"password\" placeholder=\"password\" required>\n            <input type=\"password\" placeholder=\"confirm Password\" required>\n            <input type=\"submit\" value=\"Sign Up\">\n        </form>\n        <div class=\"login-link\">\n            already have an account? <a href=\"#\">Login page</a>\n        </div>\n    </div>\n</body>\n</html>\n```\n\n### Explanation:\n- **HTML**: Creates the structure with a form including input fields for username, email, password, and password confirmation.\n- **CSS**: Styles the form to match the design, including the background color, text alignment, and element spacing.",
+        "refusal": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 781,
+    "completion_tokens": 560,
+    "total_tokens": 1341,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "system_fingerprint": "fp_a20a4ee344"
+}

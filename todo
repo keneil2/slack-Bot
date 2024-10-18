@@ -1,0 +1,10 @@
+IF LAPTOP RESTART ALWAYS REMEMBER TO CHANGE ngrok  redirect url in Slack !!
+DONE....
+1.try to send a message to slack channel when ever a file is uploaded #done 
+2.find a way to download the file
+3.implement open ai 
+4.find out how to await each reponse from chat gpt or something wait until the response is complete, look into async in php, need to wait on the response from the
+5.make sure to use app slash commads to trigger bot or @botname to trigger bot to handle file upload
+ code bot in slack...
+ todos.....
+ 6. refactor app code {:(
