@@ -7,7 +7,7 @@ spl_autoload_register(function($class){
       require_once "$class.php";
      }
 });
-require "helper.php";
+
 require "envLoader.php";
 require "commands.php";
 
