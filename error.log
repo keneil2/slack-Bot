@@ -1,0 +1,4 @@
+Exception:  prompt file not fount in C:\Users\kenei\OneDrive\Documents\Projects\slack Bot\src\Filemanager.php:11
+Stack trace:
+#0 C:\Users\kenei\OneDrive\Documents\Projects\slack Bot\index.php(56): SLACKBOT\Filemanager->getLatestPrompt()
+#1 {main}
