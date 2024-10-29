@@ -12,4 +12,4 @@ This is a Slack bot designed to convert images sent in a channel into code based
 
 1. **Clone the Repository**:
    ```bash
-   git clone <https://github.com/keneil2/slack-Bot>
+   git clone https://github.com/keneil2/slack-Bot
